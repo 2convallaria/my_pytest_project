@@ -5,6 +5,11 @@ class TodoList:
     def add(self, item):
         self._items.append(item)
         
+    def delete(self, index):
+        if 0 <= index < len(self._items):
+            return self._items.pop(index)
+        raise IndexError("Invalid index")
+        
     def items(self):
         return self._items 
     

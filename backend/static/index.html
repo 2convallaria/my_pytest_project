@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>待办事项 Demo</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+
+        input,
+        button {
+            font-size: 16px;
+            padding: 5px;
+            margin-right: 5px;
+        }
+
+        ul {
+            margin-top: 20px;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <h1>📝 待办事项</h1>
+    <div class="input-group">
+        <input type="text" id="taskInput" placeholder="写作业">
+        <button onclick="addTask()">添加</button>
+    </div>
+    <ul id="taskList"></ul>
+
+    <script>
+        const API_BASE = '';
+
+        async function loadTasks() {
+            fetch(`${API_BASE}/items`)
+                .then(res => res.json())
+                .then(tasks => {
+                    const list = document.getElementById('taskList');
+                    list.innerHTML = '';
+                    tasks.forEach((task, index) => {
+                        const li = document.createElement('li');
+                        const textSpan = document.createElement('span');
+                        textSpan.textContent = task;
+                        li.appendChild(textSpan);
+                        const delBtn = document.createElement('button');
+                        delBtn.textContent = '删除';
+                        delBtn.onclick = () => deleteTask(index);
+                        li.appendChild(delBtn);
+                        list.appendChild(li);
+                    });
+                })
+                .catch(err => console.error('加载失败:', err));
+        }
+
+        async function addTask() {
+            const input = document.getElementById('taskInput');
+            const item = input.value.trim();
+            if (item === '') return;
+            try {
+                const response = await fetch(`${API_BASE}/items`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ item: item })
+                });
+                if (response.ok) {
+                    input.value = '';
+                    loadTasks();
+                } else {
+                    console.error('添加失败');
+                }
+            } catch (error) {
+                console.error('请求出错:', error);
+            }
+        }
+
+        function deleteTask(index) {
+            fetch(`${API_BASE}/items/${index}`, {
+                method: 'DELETE'
+            })
+                .then(res => {
+                    if (res.ok) {
+                        loadTasks();  // 删除成功后重新加载列表
+                    } else {
+                        console.error('删除失败');
+                    }
+                })
+                .catch(err => console.error('请求出错:', err));
+        }
+
+        loadTasks();
+    </script>
+</body>
+
+</html>

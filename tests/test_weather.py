@@ -1,6 +1,6 @@
 import pytest
 import requests
-from weather import get_weather
+from backend.weather import get_weather
 
 def test_get_weather(mocker):
     fake_response_data = {

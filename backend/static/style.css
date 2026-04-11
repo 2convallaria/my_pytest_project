@@ -1,0 +1,40 @@
+/* 修复任务列表布局 */
+li {
+    display: flex;
+    align-items: flex-start;  /* 按钮与文字第一行顶部对齐 */
+    gap: 8px;
+    margin-bottom: 8px;
+}
+li span {
+    overflow-wrap: break-word;  /* 允许长单词或连续字符在必要时换行 */
+    min-width: 0;
+    flex: 1;                    /* 让文字占据剩余空间，但按钮不推远？实际上有 gap 控制间距，flex:1 会导致文字占满剩余宽度，按钮靠右，这又会回到之前的问题。 */
+    /* 如果你不希望文字占满整行（即按钮紧贴文字），则不要用 flex:1 */
+}
+li button {
+    flex-shrink: 0;
+    white-space: nowrap;   /* 按钮不缩小 */
+}
+
+/* 修复添加按钮换行问题 */
+#taskInput, button {
+    white-space: nowrap;
+}
+.input-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* 让标题和任务列表各占一行 */
+.input-group h1 {
+    width: 100%;
+    margin: 0 0 10px 0;
+}
+.input-group #taskList {
+    width: 100%;
+    margin-top: 20px;
+    padding-left: 0;
+    list-style: none;
+}
