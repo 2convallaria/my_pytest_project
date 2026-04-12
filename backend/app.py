@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS   # 新增
-from backend.todo import TodoList   # 注意导入路径
+from .todo import TodoList   # 注意导入路径
 
 app = Flask(__name__)
 CORS(app)   # 新增：允许所有跨域请求
@@ -28,6 +28,10 @@ def delete_item(index):
         return jsonify({"status": "ok", "deleted": deleted}), 200
     except IndexError:
         return jsonify({"error": "invalid index"}), 404
+    
+@app.route('/')
+def index():
+    return app.send_static_file('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
