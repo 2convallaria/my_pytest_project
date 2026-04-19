@@ -1,5 +1,5 @@
 # 性能测试报告：待办事项应用
-**报告日期**：2026-04-19
+**报告日期**：2026-04-19  
 **报告编写人**：黄佳蕾
 
 ## 1. 测试背景
@@ -77,11 +77,16 @@
 
 
 ## 7. 附件
-- JMeter 生成的 HTML 报告截图
+- JMeter 生成的 HTML 报告截图：
+
   ![10并发用户20循环报告截图](images/report_10users_20loops.png)
+
   ![10并发用户30循环报告截图](images/report_10users_30loops.png)
+
   ![20并发用户20循环报告截图](images/report_20users_20loops.png)
+
   ![50并发用户20循环报告截图](images/report_50users_20loops.png)
+
   ![100并发用户20循环报告截图](images/report_100users_20loops.png)
 - JMeter 生成的 HTML 报告：已保存在 `reports/` 文件夹中，打开各子目录的 `index.html` 可查看详细图表。
 
