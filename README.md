@@ -70,15 +70,18 @@ pytest -v      # 详细输出，显示每个测试用例名称
 ### 5. 项目结构
 ```text
 my_pytest_project/
-├── backend/                # 后端代码
-│   ├── app.py              # Flask 主应用
-│   ├── todo.py             # TodoList 核心类
-│   └── static/             # 前端静态文件
-├── tests/                  # 单元测试与集成测试
-├── tests_selenium/         # Selenium 脚本（需手动运行）
-├── .github/workflows/      # CI 配置
-├── requirements.txt        # 依赖列表
-├── performance_report.md   # 性能测试报告
+├── backend/                 # 后端代码
+│   ├── app.py               # Flask 主应用
+│   ├── todo.py              # TodoList 核心类
+│   └── static/              # 前端静态文件
+|—— reports/                 # JMeter 生成的 HTML 报告附件
+├── scripts/
+│   └── plot_performance.py  # 性能数据可视化脚本（可选）
+├── tests/                   # 单元测试与集成测试
+├── tests_selenium/          # Selenium 脚本（需手动运行）
+├── .github/workflows/       # CI 配置
+├── requirements.txt         # 依赖列表
+├── performance_report.md    # 性能测试报告
 └── README.md
 
 ```
