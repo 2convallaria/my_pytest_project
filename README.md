@@ -76,7 +76,7 @@ my_pytest_project/
 │   └── static/              # 前端静态文件
 |—— reports/                 # JMeter 生成的 HTML 报告附件
 ├── scripts/
-│   └── plot_performance.py  # 性能数据可视化脚本（可选）
+│   └── plot_performance.py  # 性能数据可视化脚本
 ├── tests/                   # 单元测试与集成测试
 ├── tests_selenium/          # Selenium 脚本（需手动运行）
 ├── .github/workflows/       # CI 配置

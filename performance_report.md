@@ -67,7 +67,25 @@
 **结论**：单个请求的处理时间稳定，没有因循环次数增加而出现内存泄漏或性能衰减。因此，性能瓶颈主要来源于高并发下的排队等待，而非代码效率问题。
 
 
-## 6. 结论与建议
+## 6.  前端性能评估(Lighthouse)
+
+使用 Lighthouse (Mobile 模式) 测试，结果如下：
+
+- **Performance**: 90 / 100
+- **Accessibility**: 86 / 100
+- **Best Practices**: 100 / 100
+
+**关键性能指标**：
+- First Contentful Paint (FCP): 2.7 s
+- Largest Contentful Paint (LCP): 2.7 s
+- Total Blocking Time (TBT): 0 ms
+- Cumulative Layout Shift (CLS): 0
+- Speed Index((SI)): 3.0 s
+
+> 注：Accessibility 有轻微改进空间（如添加 `lang` 属性），但不影响核心功能。
+
+
+## 7. 结论与建议
 - **性能拐点**：系统在 50 并发时性能良好（平均响应时间 360ms，95% 分位 624ms，吞吐量 32.2 req/s）；当并发升至 100 时，平均响应时间上升 36% 至 491ms，95% 分位翻倍至 1158ms，吞吐量仅从 32.2 增至 34.2 req/s，增长几乎停滞。错误率始终为 0%，系统未崩溃但响应质量显著下降。
 
   建议将并发用户控制在 **50 以内**，以保证用户体验。下图清晰展示了吞吐量在 50 并发后趋于平缓的拐点：
@@ -86,7 +104,7 @@
 - **后续测试**：若需精确拐点，可补充 70 并发测试，但当前范围已足够决策。
 
 
-## 7. 附件
+## 8. 附件
 - JMeter 生成的 HTML 报告截图：
 
   ![10并发用户30循环报告截图](https://github.com/user-attachments/assets/10788a06-e646-4533-b4c4-4966e1ca71af)
@@ -100,6 +118,12 @@
   ![10并发用户20循环报告截图](https://github.com/user-attachments/assets/8c4a8302-c5d1-409d-95d1-a755686f4786)
 
 - JMeter 生成的 HTML 报告：已保存在 `reports/` 文件夹中，打开各子目录的 `index.html` 可查看详细图表。
+
+- 前端性能评估(Lighthouse) 报告截图：
+
+  ![Lighthouse 分数截图](https://github.com/user-attachments/assets/403a4c49-4b7c-4d00-9f1b-b4c0e3398df2)
+
+  ![性能指标截图](https://github.com/user-attachments/assets/290e4c3b-f303-41a2-9cd0-57fb42486e65)
 
 ---
 
