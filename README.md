@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/2convallaria/my_pytest_project/actions/workflows/ci.yml/badge.svg)](https://github.com/2convallaria/my_pytest_project/actions/workflows/ci.yml)
 
-一个基于 Flask + 原生 JavaScript 的待办事项应用，旨在展示**全栈测试开发能力**，包含单元测试、API 集成测试、性能测试和 CI/CD 自动化。
+一个基于 Flask + 原生 JavaScript 的待办事项应用，旨在展示**全栈测试开发能力**，包含自动化测试、单元测试、API 集成测试、性能测试和 CI/CD 自动化。
 
 **在线演示**：[https://furikae.pythonanywhere.com](https://furikae.pythonanywhere.com)
 
@@ -21,9 +21,11 @@
 - 数据内存存储（可扩展数据库）
 
 ## 测试覆盖
-- **单元测试**：测试 `TodoList` 类的核心逻辑（添加、删除、保存等）。
-- **API 集成测试**：使用 Flask test_client 验证 `/items` (GET/POST) 和 `/items/<int:index>` (DELETE) 的行为。
-- **性能测试**：使用 JMeter 对 `/items` 接口进行阶梯加压测试，分析响应时间和吞吐量。详见 [性能测试报告](./performance_report.md)。
+- **单元测试**：15 个测试用例，覆盖 TodoList 核心逻辑（添加/删除/保存）
+- **API 集成测试**：8 个测试用例，使用 Flask test_client 验证 /items (GET/POST) 和 /items/<int:index> (DELETE) 的行为
+- **UI 自动化测试**：Selenium 脚本，覆盖核心用户流程
+- **测试覆盖率**：89%
+- **性能测试**：使用 JMeter 对 /items 接口进行阶梯加压测试，分析响应时间和吞吐量。详见 [性能测试报告](./performance_report.md)
 - **自动化流水线**：GitHub Actions 在每次 push 时自动运行 pytest
 
 ## 快速开始
