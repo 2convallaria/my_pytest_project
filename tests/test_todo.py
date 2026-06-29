@@ -32,6 +32,19 @@ def test_save_to_file_opens_file(mocker, todo_list):
         mocker.call('复习'),
         mocker.call('添加任务1'),
     ])
+
+# 正常删除
+def tests_delete_item(todo_list):
+    todo_list.add("任务1")
+    todo_list.add("任务2")
+    delete = todo_list.delete(0)
+    assert delete == "任务1"
+    assert todo_list.items() == ["任务2"]
+
+# 异常删除
+def test_delete_out_of_range(todo_list):
+    with pytest.raises(IndexError, match="Invalid index"):
+        todo_list.delete(0)
     
 #autouse的设置会适应于所有测试，比如在每个文件内都写入特定内容，需要注意的是不能用于返回参数的场景，
 # 因为它并不会自动返回参数值，它只能重复某个操作
