@@ -32,9 +32,3 @@ class TodoList:
         except FileNotFoundError:
             pass
         return cls(tasks)             
-            
-# to_do_list = TodoList()
-# to_do_list.add('写代码\n')
-# to_do_list.add('吃饭\n')
-# to_do_list.add('投简历\n')
-# to_do_list.save_to_file('1.txt')
