@@ -3,7 +3,7 @@ import pytest
 import json
 
 def test_get_request():
-    url = "https://httpbin.org/get"
+    url = "https://postman-echo.com/get"
     params = {"key": "value"}
     response = requests.get(url, params=params)
     
@@ -18,7 +18,7 @@ def test_get_request():
     assert "key=value" in data["url"]
     
 def test_post_form():
-    url = "https://httpbin.org/post"
+    url = "https://postman-echo.com/post"
     data = {"username": "keyword", "password": "123456"}
     response = requests.post(url, data=data)
     
